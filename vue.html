@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ a }}
+</div>
+
+<div id="demo">{{ fullName }}</div>
+
+<div id="example">
+    <p>Original message: "{{ message }}"</p>
+    <p>Computed reversed message: "{{ reversedMessage }}"</p>
+</div>
+
+<div id="components-demo">
+    <button-counter></button-counter>
+</div>
+
+
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            a: 100
+        },
+        created: function () {
+            // `this` は vm インスタンスを指します
+            console.log('a is: ' + this.a)
+        }
+    })
+
+    var vm = new Vue({
+        el: '#demo',
+        data: {
+            firstName: 'Fuminori',
+            lastName: 'Arimoto'
+        },
+        computed: {
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            }
+        }
+    })
+
+    var vm = new Vue({
+        el: '#example',
+        data: {
+            message: 'Hello'
+        },
+        computed: {
+            // 算出 getter 関数
+            reversedMessage: function () {
+                // `this` は vm インスタンスを指します
+                return this.message.split('').reverse().join('')
+            }
+        }
+    })
+
+    console.log(vm.reversedMessage) // => 'olleH'
+    vm.message = 'Goodbye'
+    console.log(vm.reversedMessage) // => 'eybdooG'
+
+
+
+    Vue.component('button-counter', {
+        data: function () {
+            return {
+                count: 0
+            }
+        },
+        template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+    })
+
+    new Vue({ el: '#components-demo' })
+
+
+</script>
+</body>
+</html>
