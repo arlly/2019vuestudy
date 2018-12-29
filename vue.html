@@ -4,6 +4,17 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="./node_modules/vue/dist/vue.js"></script>
+
+    <style type="text/css">
+        .v-enter-active, .v-leave-active {
+            transition: opacity 3s;
+        }
+
+        .v-enter, .v-leave-to {
+            opacity: 0;
+        }
+
+    </style>
 </head>
 <body>
 <div id="app">
@@ -19,8 +30,18 @@
 
 <div id="components-demo">
     <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+
 </div>
 
+<div id="app2">
+    <button v-on:click="show=!show">切り替え</button>
+    <transition>
+        <p v-if="show">Hello Vue.js</p>
+    </transition>
+</div>
 
 
 
@@ -79,6 +100,13 @@
     })
 
     new Vue({ el: '#components-demo' })
+
+    var app = new Vue({
+        el: '#app2',
+        data: {
+            show :true
+        }
+    })
 
 
 </script>
