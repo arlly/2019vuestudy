@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ message.value}}</p>
+</div>
+
+<div id="app2">
+    <p>{{ count }}回クリックしたよ</p>
+    <button v-on:click="increment">カウントを増やす</button>
+</div>
+
+
+<script>
+    new Vue({
+            el: '#app',
+            data: {
+                message: {
+                    value: 'Hello.js!'
+                },
+                list: ['りんご', 'ばなな', 'いちご'],
+                num: 1
+            }
+        }
+    )
+
+    new Vue({
+        el: '#app2',
+        data: {
+            count: 0
+        },
+        methods: {
+            increment: function () {
+                this.count += 1
+            }
+        }
+    })
+
+
+</script>
+
+</body>
+</html>
