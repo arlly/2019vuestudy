@@ -12,13 +12,29 @@
 
     <button v-on:click="display">表示する</button>
 
+    <div v-if="type === 'A'">
+        typeはA
+    </div>
+
+    <div v-else-if="type === 'B'">
+        typeはB
+    </div>
+
+    <div v-else>
+        すべての条件を満たさなかった
+    </div>
+    <input v-model="type">
+
+
+
 </div>
 
 <script>
 new Vue({
     el: '#app',
     data: {
-        ok: false
+        ok: false,
+        type: "A"
     },
     methods: {
         display: function () {
