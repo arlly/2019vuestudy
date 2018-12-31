@@ -20,11 +20,14 @@
     new Vue({
         el: '#app',
         data: {
-            list: [
-                {id: 1, name: 'グラハント', hp: 100, power: 'H'},
-                {id: 2, name: 'ディープマニピュレーター', hp: 1100, power: 'MH'},
-                {id: 3, name: 'フェザーストローク', hp: 1020, power: 'M'},
-            ]
+            list: []
+        },
+        created: function() {
+            axios.get('list.json').then(function (response) {
+                this.list = response.data
+            }.bind(this)).catch(function (e) {
+                console.error(e)
+            })
         },
         methods: {
             doAttack: function(index) {
