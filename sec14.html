@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="app">
+    <input v-model="message">
+    <input type="checkbox" v-model="val">{{ val}}
+    <p>{{ message }}</p>
+    <p>{{ message }}</p>
+    <p>{{ message }}</p>
+    <p>{{ message }}</p>
+    <p>{{ message }}</p>
+
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello!',
+                val: true
+            }
+        })
+    </script>
+</div>
+
+</body>
+</html>
