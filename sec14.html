@@ -16,13 +16,25 @@
     <p>{{ message }}</p>
     <p>{{ message }}</p>
 
+    <label><input type="checkbox" v-model="values" value="A">A</label>
+    <label><input type="checkbox" v-model="values" value="B">B</label>
+    <label><input type="checkbox" v-model="values" value="C">C</label>
+    <p>{{ values }}</p>
+
+    <label><input type="radio" v-model="value" value="A">A</label>
+    <label><input type="radio" v-model="value" value="B">B</label>
+    <label><input type="radio" v-model="value" value="C">C</label>
+    <p>{{ value }}</p>
+
 
     <script>
         new Vue({
             el: '#app',
             data: {
                 message: 'Hello!',
-                val: true
+                val: true,
+                values: [],
+                value: ''
             }
         })
     </script>
