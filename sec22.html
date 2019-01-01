@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="app">
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+
+    <my-component2></my-component2>
+
+    <comp-child val="これはテスト"></comp-child>
+    <comp-child val="これはテストじゃない"></comp-child>
+    <comp-child val="これはテストかもしれない"></comp-child>
+
+    <ul>
+        <comp-list v-for="item in list" v-bind:key="item.id" v-bind:name="item.name" v-bind:hp="item.hp" v-bind:power="item.power"></comp-list>
+    </ul>
+</div>
+
+<script>
+    var myComponent = {
+        template: '<p>MyComponent!</p>'
+    }
+
+    var myComponent2 = {
+        template: '<p>MyComponent2!</p>'
+    }
+
+    Vue.component('comp-child', {
+        template: '<p>{{ val }}</p>',
+        props: ['val']
+    })
+
+    Vue.component('comp-list', {
+        template: '<li>{{ name }} HP. {{ hp }} Power {{ power }}</li>',
+        props: ['name', 'hp', 'power']
+    })
+
+    new Vue({
+        el: '#app',
+        components: {
+            'my-component': myComponent,
+            'my-component2': myComponent2,
+        },
+        data: {
+            list: [
+                {id: 1, name: 'グラハント', hp: 100, power: 'H'},
+                {id: 2, name: 'ディープマニピュレーター', hp: 1100, power: 'MH'},
+                {id: 3, name: 'フェザーストローク', hp: 1020, power: 'M'}
+            ]
+        }
+    })
+
+</script>
+</body>
+</html>
