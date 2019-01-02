@@ -11,7 +11,7 @@ const router = new VueRouter({
     routes: [
         {path: '/', component: Home},
         {path: '/product', component: ProductList},
-        {path: '/product/:id', component: Product}
+        {path: '/product/:id', component: Product, props: route => ({ id: Number(route.params.id)})}
     ]
 })
 
