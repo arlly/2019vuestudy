@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <button v-on:click="video1=true">再生</button>
+    <button v-on:click="video1=false">停止</button>
+    <video src="movie1.mp4" v-video="video1" width="640px"></video>
+
+    <button v-on:click="video2=true">再生</button>
+    <button v-on:click="video2=false">停止</button>
+    <video src="movie2.mp4" v-video="video2" width="640px"></video>
+</div>
+
+<script>
+    new Vue({
+        el:'#app',
+        data: {
+            video1: false,
+            video2: false
+        },
+        directives: {
+            video(el, binding) {
+                if (binding.value !== binding.oldValue) {
+                    binding.value ? el.play() : el.pause()
+                }
+            }
+        }
+    })
+
+</script>
+
+</body>
+</html>
