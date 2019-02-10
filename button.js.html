@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+<div id="app">
+    <button v-on:click="display=!display">表示</button>
+    <h1 v-if="display">Yes</h1>
+</div>
+
+<script>
+    new Vue({
+            el: '#app',
+            data: {
+                display: false
+            }
+        }
+    )
+
+</script>
+</body>
+</html>
