@@ -9,20 +9,20 @@
 <body>
 
 <div id="app">
-    <input type="file" v-on:change="handleChange">
-    <div v-if="preview"><img v-bind:src="preview" width="240"></div><br />
+    <input type="file" v-on:change="handleChange(1, $event)">
+    <div v-if="preview1"><img v-bind:src="preview1" width="240"></div><br />
 
-    <input type="file" v-on:change="handleChange">
-    <div v-if="preview"><img v-bind:src="preview" width="240"></div><br />
+    <input type="file" v-on:change="handleChange(2, $event)">
+    <div v-if="preview2"><img v-bind:src="preview2" width="240"></div><br />
 
-    <input type="file" v-on:change="handleChange">
-    <div v-if="preview"><img v-bind:src="preview" width="240"></div><br />
+    <input type="file" v-on:change="handleChange(3, $event)">
+    <div v-if="preview3"><img v-bind:src="preview3" width="240"></div><br />
 
-    <input type="file" v-on:change="handleChange">
-    <div v-if="preview"><img v-bind:src="preview" width="240"></div><br />
+    <input type="file" v-on:change="handleChange(4, $event)">
+    <div v-if="preview4"><img v-bind:src="preview4" width="240"></div><br />
 
-    <input type="file" v-on:change="handleChange">
-    <div v-if="preview"><img v-bind:src="preview" width="240"></div><br />
+    <input type="file" v-on:change="handleChange(5, $event)">
+    <div v-if="preview5"><img v-bind:src="preview5" width="240"></div><br />
 </div>
 
 <script>
@@ -30,14 +30,22 @@
         {
             el: '#app',
             data: {
-                preview: ''
+                preview: '',
+                preview1: '',
+                preview2: '',
+                preview3: '',
+                preview4: '',
+                preview5: '',
             },
             methods: {
-                handleChange: function (event) {
-                    console.log(event.target.files);
+                handleChange: function (number, event) {
+                    console.log(number);
                     var file = event.target.files[0]
                     if (file && file.type.match(/^image\/(png|jpeg)$/)) {
                         this.preview = window.URL.createObjectURL(file)
+
+                        if (number == 1) this.preview1 = window.URL.createObjectURL(file)
+                        if (number == 2) this.preview2 = window.URL.createObjectURL(file)
                     }
                 }
             }
