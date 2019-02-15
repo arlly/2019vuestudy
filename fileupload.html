@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="./node_modules/axios/dist/axios.js"></script>
+</head>
+<body>
+
+<div id="app">
+    <input type="file" v-on:change="handleChange">
+    <div v-if="preview"><img v-bind:src="preview" width="240"></div>
+</div>
+
+<script>
+    new Vue(
+        {
+            el: '#app',
+            data: {
+                preview: ''
+            },
+            methods: {
+                handleChange: function (event) {
+                    var file = event.target.files[0]
+                    if (file && file.type.match(/^image\/(png|jpeg)$/)) {
+                        this.preview = window.URL.createObjectURL(file)
+                    }
+                }
+            }
+        }
+    )
+
+</script>
+</body>
+</html>
